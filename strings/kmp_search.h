@@ -17,3 +17,16 @@ std::vector<int> PrefixFunc(const std::string &s) {
     }
     return prefix_func;
 }
+
+
+std::vector<int> KMP_Search(const std::string &s, const std::string &t) {
+    std::vector<int> occurrences;
+    std::string st = s + '#' + t;
+    std::vector<int> pf = PrefixFunc(st);
+    for (size_t i = s.size() + 1; i < st.size(); ++i) {
+        if ( pf[i] == s.size() ) {
+            occurrences.push_back(i - 2 * s.size());
+        }
+    }
+    return occurrences;
+}
