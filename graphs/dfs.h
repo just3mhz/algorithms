@@ -6,11 +6,13 @@
 
 using TAdjLists = std::vector<std::vector<int>>;
 
-const char USED = 1;
-const char UNUSED = 0;
+enum class TStatus {
+    UNUSED,
+    USED
+};
 
-bool DFS_AnyPath(int curr, int end, const TAdjLists &graph, std::vector<char> &used, std::vector<int> &path) {
-    used[curr] = USED;
+bool DFS_AnyPath(int curr, int end, const TAdjLists &graph, std::vector<TStatus> &used, std::vector<int> &path) {
+    used[curr] = TStatus::USED;
     // Vertex "end" is found, start recording path
     if ( curr == end ) {
         path.push_back(curr);
@@ -18,7 +20,7 @@ bool DFS_AnyPath(int curr, int end, const TAdjLists &graph, std::vector<char> &u
     }
     for (int v: graph[curr]) {
         // Current vertex lies on path
-        if ( used[v] == UNUSED && DFS_AnyPath(v, end, graph, used, path)) {
+        if ( used[v] == TStatus::UNUSED && DFS_AnyPath(v, end, graph, used, path)) {
             path.push_back(curr);
             return true;
         }

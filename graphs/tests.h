@@ -21,7 +21,7 @@ void NGraph::Test_DFS_AnyPath() {
         };
         
         std::vector<int> path;
-        std::vector<char> used(5, 0);
+        std::vector<TStatus> used(5, TStatus::UNUSED);
         std::vector<int> expected = {0, 1, 2, 4};
         
         int s = 0;
@@ -38,7 +38,7 @@ void NGraph::Test_DFS_AnyPath() {
             {1}, {2}, {3}, {0}
         };
         std::vector<int> path;
-        std::vector<char> used(4, 0);
+        std::vector<TStatus> used(4, TStatus::UNUSED);
         int s = 0;
         int d = 4;
         bool found = DFS_AnyPath(s, d, graph, used, path);
