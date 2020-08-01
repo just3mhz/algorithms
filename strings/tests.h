@@ -3,7 +3,11 @@
 #include "kmp_search.h"
 #include "../test_runner.h"
 
-void TestKMP() {
+namespace NString {
+    void Test_KMP();
+}
+
+void NString::Test_KMP() {
     {
         std::string s = "abcabcd";
         std::vector<int> expected = {0,0,0,1,2,3,0};

@@ -1,4 +1,5 @@
 #include "strings/tests.h"
+#include "graphs/tests.h"
 
 
 void TestAll();
@@ -10,5 +11,7 @@ int main() {
 
 void TestAll() {
     TestRunner tr;
-    RUN_TEST(tr, TestKMP);
+    RUN_TEST(tr, NString::Test_KMP);
+    
+    RUN_TEST(tr, NGraph::Test_DFS_AnyPath);
 }
